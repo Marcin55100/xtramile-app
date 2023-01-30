@@ -50,5 +50,6 @@
     "plugins": [
       "@babel/plugin-transform-runtime"
     ]
-  }
+  },
+  "proxy": "https://xtramile.azure-api.net"
 }
