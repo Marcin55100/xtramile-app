@@ -9,10 +9,10 @@ const App: React.FC = () => {
   const [data, setData] = useState<IProject[]>([]);
 
   const fetchData = async () => {
-    const uri =
-      "https://cors-anywhere.herokuapp.com/https://xtramile.azure-api.net/stats/lukaszcoding?apiSecret=i34nvn324gdfg5";
+    const uri = "/stats/lukaszcoding?apiSecret=i34nvn324gdfg5";
     const response = await axios.get<IProject[]>(uri);
     setData(response.data);
+    console.log(response.data);
   };
 
   useEffect(() => {
