@@ -12,11 +12,11 @@ const columns = [
     accessor: "Course" as const,
   },
   {
-    Header: "OpenedLessons",
+    Header: "Opened Lessons",
     accessor: "OpenedLessonsCount" as const,
   },
   {
-    Header: "CompletedLessons",
+    Header: "Completed Lessons",
     accessor: "CompletedLessonsCount" as const,
   },
 ];
