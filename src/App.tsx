@@ -4,6 +4,10 @@ import "./App.css";
 import { IProject } from "./models/IProject";
 import ProjectsTable from "./components/ProjectsTable";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  filterByCourse,
+  getOpenedLessonsForCourse,
+} from "./utils/FilterDataExtensions";
 
 const App: React.FC = () => {
   const [data, setData] = useState<IProject[]>([]);
@@ -11,20 +15,13 @@ const App: React.FC = () => {
   const fetchData = async () => {
     const uri = "/stats/lukaszcoding?apiSecret=i34nvn324gdfg5";
     const response = await axios.get<IProject[]>(uri);
-    const filteredData = response.data.filter(
-      (project, i, arr) =>
-        arr.findIndex((p) => p.Course === project.Course) === i
-    );
+    const filteredData = filterByCourse(response.data);
     const uniqueCourseNames = filteredData.map((f) => f.Course);
 
     uniqueCourseNames.forEach((c) => {
-      let openedCourses = response.data
-        .filter((p) => p.Course == c)
-        .map((p) => p.OpenedLessonsCount)
-        .reduce((acc, curr) => +acc + +curr, 0);
-      console.log(openedCourses);
+      let openedLessons = getOpenedLessonsForCourse(response.data, c);
       filteredData.forEach((f) => {
-        if (f.Course == c) f.OpenedLessonsCount = openedCourses.toString();
+        if (f.Course == c) f.OpenedLessonsCount = openedLessons.toString();
       });
     });
 
