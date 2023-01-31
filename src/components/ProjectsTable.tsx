@@ -5,10 +5,15 @@ import { IProject } from "../models/IProject";
 type Props = {
   data: IProject[];
 };
+
 const columns = [
   {
-    Header: "Project",
-    accessor: "project" as const,
+    Header: "Course",
+    accessor: "Course" as const,
+  },
+  {
+    Header: "OpenedLessons",
+    accessor: "OpenedLessonsCount" as const,
   },
 ];
 
@@ -16,6 +21,7 @@ function ProjectsTable(props: Props) {
   const data = useMemo(() => props.data, [props.data]);
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
+
   return (
     <table>
       <thead>
