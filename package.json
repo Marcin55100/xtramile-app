@@ -44,7 +44,10 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.19.6",
-    "@types/react-table": "^7.7.14"
+    "@types/react-table": "^7.7.14",
+    "bootstrap": "^5.2.3",
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.1"
   },
   "babel": {
     "plugins": [
