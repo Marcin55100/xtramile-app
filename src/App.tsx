@@ -6,8 +6,9 @@ import ProjectsTable from "./components/ProjectsTable";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   filterByCourse,
+  getCompletedLessonsForCourse,
   getOpenedLessonsForCourse,
-} from "./utils/FilterDataExtensions";
+} from "./utils/FilterDataFunctions";
 
 const App: React.FC = () => {
   const [data, setData] = useState<IProject[]>([]);
@@ -20,8 +21,12 @@ const App: React.FC = () => {
 
     uniqueCourseNames.forEach((c) => {
       let openedLessons = getOpenedLessonsForCourse(response.data, c);
+      let completedLessons = getCompletedLessonsForCourse(response.data, c);
       filteredData.forEach((f) => {
-        if (f.Course == c) f.OpenedLessonsCount = openedLessons.toString();
+        if (f.Course == c) {
+          f.OpenedLessonsCount = openedLessons.toString();
+          f.CompletedLessonsCount = completedLessons;
+        }
       });
     });
 
