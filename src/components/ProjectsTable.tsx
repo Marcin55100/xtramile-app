@@ -15,6 +15,10 @@ const columns = [
     Header: "OpenedLessons",
     accessor: "OpenedLessonsCount" as const,
   },
+  {
+    Header: "CompletedLessons",
+    accessor: "CompletedLessonsCount" as const,
+  },
 ];
 
 function ProjectsTable(props: Props) {

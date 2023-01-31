@@ -15,3 +15,13 @@ export function getOpenedLessonsForCourse(
     .map((p) => p.OpenedLessonsCount)
     .reduce((acc, curr) => +acc + +curr, 0);
 }
+
+export function getCompletedLessonsForCourse(
+  projects: IProject[],
+  courseName: string
+) {
+  return projects
+    .filter((p) => p.Course == courseName)
+    .map((p) => p.CompletedLessonsCount)
+    .reduce((acc, curr) => +acc + +curr, 0);
+}
