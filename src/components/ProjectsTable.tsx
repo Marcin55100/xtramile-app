@@ -23,8 +23,8 @@ function ProjectsTable(props: Props) {
     useTable({ columns, data });
 
   return (
-    <table>
-      <thead>
+    <table className="table table-striped table-bordered table-hover">
+      <thead className="table-dark">
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
